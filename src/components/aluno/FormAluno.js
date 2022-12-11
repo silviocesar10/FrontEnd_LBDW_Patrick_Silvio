@@ -1,6 +1,6 @@
-import FormInput from "./FormInput";
-import CleaveInput from "./CleaveInput";
-import FormSelect from "./FormSelect";
+import FormInput from "../FormInput";
+import CleaveInput from "../utils/CleaveInput";
+import FormSelect from "../utils/FormSelect";
 
 const FormAluno = ({ handleChange, inputs, errors, isNew }) => {
     return (
