@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
-import TableAlunos from "../../components/TableAlunos";
+import TableAlunos from "../../components/aluno/TableAlunos";
 import "./Listagem.css";
 
 const Listagem = () => {

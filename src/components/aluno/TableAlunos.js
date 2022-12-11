@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import ConfirmModal from "./ConfirmModal";
+import ConfirmModal from "../utils/ConfirmModal";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const TableAlunos = ({ alunos, setAlunos }) => {
@@ -17,15 +17,15 @@ const TableAlunos = ({ alunos, setAlunos }) => {
 
     function excluirAluno() {
         axios.delete(`http://localhost:8080/api/alunos/${alunoExcluir._id}`)
-                .then((data) => {
-                    const alunosAtualizados = alunos.filter((aluno) => aluno._id !== alunoExcluir._id);
-                    setAlunos(alunosAtualizados);
-                    modal.hide();
-                })
-                .catch((error) => {
-                    console.log(error);
-                    modal.hide();
-                });
+            .then((data) => {
+                const alunosAtualizados = alunos.filter((aluno) => aluno._id !== alunoExcluir._id);
+                setAlunos(alunosAtualizados);
+                modal.hide();
+            })
+            .catch((error) => {
+                console.log(error);
+                modal.hide();
+            });
     }
 
     return alunos.length === 0 ? (

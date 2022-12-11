@@ -1,4 +1,4 @@
-import FormInput from "../FormInput";
+import FormInput from "../utils/FormInput";
 import CleaveInput from "../utils/CleaveInput";
 import FormSelect from "../utils/FormSelect";
 
