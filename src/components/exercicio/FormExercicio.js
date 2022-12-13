@@ -7,16 +7,16 @@ const FormExercicio = ({ handleChange, inputs, errors, isNew }) => {
         <>
             <div className="row">
                 <div className="col-12 col-md-6">
-                    <FormInput type="text" field="nome" placeholder="Fulano de Tal" label="Nome" onChange={handleChange} value={inputs?.nome} error={errors?.nome} />
+                    <FormInput type="number" field="ordem" placeholder="1" label="Ordem" onChange={handleChange} value={inputs?.ordem} error={errors?.ordem} />
                 </div>
                 <div className="col-6 col-md-3">
-                    <FormInput type="number" field="pesoMinimo" placeholder="00" label="Peso Minimo" onChange={handleChange} value={inputs?.pesoMinimo} error={errors?.pesoMinimo} />
+                    <FormInput type="number" field="peso" placeholder="00" label="Peso" onChange={handleChange} value={inputs?.peso} error={errors?.peso} />
                 </div>
                 <div className="col-6 col-md-3">
-                    <FormInput type="number" field="pesoMaximo" placeholder="100" label="Peso Maximo" onChange={handleChange} value={inputs?.pesoMaximo} error={errors?.pesoMaximo} />
+                    <FormInput type="number" field="repeticoes" placeholder="100" label="Repeticoes" onChange={handleChange} value={inputs?.repeticoes} error={errors?.repeticoes} />
                 </div>
                 <div className="col-6 col-md-3">
-                    <FormInput type="number" field="degrauPeso" placeholder="00" label="degrauPeso" onChange={handleChange} value={inputs?.degrauPeso} error={errors?.degrauPeso} />
+                    <FormInput type="number" field="series" placeholder="00" label="Series" onChange={handleChange} value={inputs?.series} error={errors?.series} />
                 </div>
             </div>
         </>
