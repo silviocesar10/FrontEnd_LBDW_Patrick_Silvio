@@ -1,5 +1,5 @@
 import FormInput from "../utils/FormInput";
-import CleaveInput from "../utils/CleaveInput";
+//import CleaveInput from "../utils/CleaveInput";
 //import FormSelect from "../utils/FormSelect";
 
 const FormExercicio = ({ handleChange, inputs, errors, isNew }) => {
@@ -16,7 +16,7 @@ const FormExercicio = ({ handleChange, inputs, errors, isNew }) => {
                     <FormInput type="number" field="pesoMaximo" placeholder="100" label="Peso Maximo" onChange={handleChange} value={inputs?.pesoMaximo} error={errors?.pesoMaximo} />
                 </div>
                 <div className="col-6 col-md-3">
-                    <CleaveInput type="number" field="degrauPeso" placeholder="00" label="degrauPeso" onChange={handleChange} value={inputs?.degrauPeso} error={errors?.degrauPeso} />
+                    <FormInput type="number" field="degrauPeso" placeholder="00" label="degrauPeso" onChange={handleChange} value={inputs?.degrauPeso} error={errors?.degrauPeso} />
                 </div>
             </div>
         </>
