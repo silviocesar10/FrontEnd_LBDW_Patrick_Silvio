@@ -98,7 +98,7 @@ const Cadastro = () => {
             </div>
             <hr />
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} />
+                <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} isNew={true} />
                 <div className="mt-3">
                     <Link to="/alunos" className="btn btn-secondary me-1">
                         Cancelar
