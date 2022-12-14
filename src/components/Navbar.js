@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { getUser } from "../services/authServices";
+
+//TODO: falta fazer funcionar o botão do menu responsivo
 
 const Navbar = () => {
+    const [usuario, setUsuario] = useState({});
+
+    useEffect(() => {
+        const usuario = getUser();
+        setUsuario(usuario);
+    }, []);
+
     return (
         <>
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3 sticky-top">
@@ -20,6 +31,14 @@ const Navbar = () => {
                             <NavLink to="/alunos" className="nav-link">
                                 Alunos
                             </NavLink>
+                            {usuario.ativo && (
+                                <NavLink to="/ativos" className="nav-link">
+                                    Ativos
+                                </NavLink>
+                            )}
+                            <Link to="/logout" className="nav-link">
+                                Sair
+                            </Link>
                         </div>
                     </div>
                 </div>
