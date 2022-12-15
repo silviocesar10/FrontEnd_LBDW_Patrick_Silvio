@@ -1,8 +1,8 @@
 import * as yup from "yup";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FormInput from "../components/FormInput";
-import FormCheckbox from "../components/FormCheckbox";
+import FormInput from "../components/utils/FormInput";
+import FormCheckbox from "../components/utils/FormCheckbox";
 import { login } from "../services/authServices";
 
 const Login = () => {
