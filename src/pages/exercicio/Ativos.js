@@ -8,7 +8,7 @@ const Ativos = () => {
 
     const getDados = async () => {
         await axios
-            .get("http://localhost:8080/api/alunos/ativos", { headers: authHeader() })
+            .get("http://localhost:8080/api/tipoExercicio/ativos", { headers: authHeader() })
             .then((response) => {
                 if (response.status === 200) {
                     setDados(response.data);
@@ -38,7 +38,7 @@ const Ativos = () => {
         <>
             {usuario.ativo ? (
                 <>
-                    <h1>Página Restrita a Alunos Ativos</h1>
+                    <h1>Página Restrita aos exercícios ativos Ativos</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui veniam impedit quas quisquam. Architecto, numquam! Praesentium recusandae sapiente voluptas perspiciatis? Dolores provident perspiciatis fuga et alias atque pariatur incidunt dolorem.</p>
                     <ul>
                         {dados.map((item) => (
