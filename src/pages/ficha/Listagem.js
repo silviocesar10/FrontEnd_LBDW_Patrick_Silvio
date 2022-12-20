@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
-import TableFicha from "../../components/aluno/TableFicha";
+import TableFicha from "../../components/ficha/TableFicha"; //falta o TableFicha no components
 import "./Listagem.css";
 
 const Listagem = () => {
