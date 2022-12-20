@@ -11,7 +11,7 @@ const Listagem = () => {
 
     const carregarTipoExercicio = () => {
         axios
-            .get("http://localhost:8080/api/tipoexercicios")
+            .get("http://localhost:8080/api/tipoexercicio")
             .then((response) => {
                 setTipoExercicio(response.data);
                 setLoading(false);
@@ -28,7 +28,7 @@ const Listagem = () => {
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
-                <h1>TipoExercicio</h1>
+                <h1>Tipo de Exercício</h1>
                 <Link to="/tipoexercicios/cadastrar" className="btn btn-primary">
                     Novo
                 </Link>
