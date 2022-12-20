@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
-import FormAluno from "../../components/ficha/FormAluno";
+import FormFicha from "../../components/ficha/FormFicha";
 import InformModal from "../../components/utils/InformModal";
 
 const Alteracao = () => {
@@ -13,8 +13,8 @@ const Alteracao = () => {
     const [modal, setModal] = useState(undefined);
     const navigate = useNavigate();
 
-    const idAluno = useParams().id;
-    if (!idAluno) {
+    const idFicha = useParams().id;
+    if (!idFicha) {
         navigate("/listagem");
     }
 
@@ -38,7 +38,7 @@ const Alteracao = () => {
             .then(() => {
                 setErrors({});
                 axios
-                    .put(`http://localhost:8080/api/ficha/${idAluno}`, inputs)
+                    .put(`http://localhost:8080/api/ficha/${idFicha}`, inputs)
                     .then((response) => {
                         if (response.status === 200) {
                             modal.show();
@@ -66,9 +66,9 @@ const Alteracao = () => {
     useEffect(() => {
         const informModal = new bootstrap.Modal("#informModal", {});
         setModal(informModal);
-        setInputs({ ...inputs, id: idAluno });
+        setInputs({ ...inputs, id: idFicha });
         axios
-            .get(`http://localhost:8080/api/ficha/${idAluno}`)
+            .get(`http://localhost:8080/api/ficha/${idFicha}`)
             .then((response) => {
                 if (response.status === 200) {
                     setInputs(response.data);
@@ -101,11 +101,11 @@ const Alteracao = () => {
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
-                <h1>Alteração de Aluno</h1>
+                <h1>Alteração de Ficha</h1>
             </div>
             <hr />
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} />
+                <FormFicha handleChange={handleChange} inputs={inputs} errors={errors} />
                 <div className="mt-3">
                     <Link to="/ficha" className="btn btn-secondary me-1">
                         Cancelar
@@ -115,7 +115,7 @@ const Alteracao = () => {
                     </button>
                 </div>
             </form>
-            <InformModal info="Aluno alterado com sucesso!" action={closeModalAndRedirect} />
+            <InformModal info="Ficha alterado com sucesso!" action={closeModalAndRedirect} />
         </>
     );
 };
