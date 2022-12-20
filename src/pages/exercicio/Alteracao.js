@@ -21,18 +21,9 @@ const Alteracao = () => {
     //https://github.com/jquense/yup
     const validator = yup.object().shape({
         nome: yup.string().required("Nome é obrigatório."),
-        dataNascimento: yup.date().required("Data de nascimento é obrigatória."),
-        cpf: yup.string().length(11, "CPF está incompleto.").required("CPF é obrigatório."),
-        sexo: yup.string().oneOf(["M", "F", "O"], "Gênero está incorreto.").required("Gênero é obrigatório."),
-        telefone: yup.string().length(11, "Telefone está incompleto.").required("Telefone é obrigatório."),
-        email: yup.string().email("E-mail inválido.").required("E-mail é obrigatório."),
-        //durante a alteração, senha e confSenha não são obrigatórios
-        // senha: yup.string().min(6, "Senha deve ter pelo menos 6 caracteres.").max(12, "Senha deve ter no máximo 12 caracteres.").required("Senha é obrigatória."),
-        // confSenha: yup
-        //     .string()
-        //     .oneOf([yup.ref("senha"), null], "Confirmação de Senha e Senha devem ser iguais.")
-        //     .required("Confirmação de Senha é obrigatória."),
-        ativo: yup.boolean().required("Situação é obrigatória."),
+        pesoMinimo: yup.number().required("Peso minimo é obrigatorio"),
+        pesoMaximo: yup.number().required("Peso maximo é obrigatorio"),
+        degrauPeso: yup.number().required("Degrau peso é obrigatorio")
     });
 
     function handleChange(event) {
