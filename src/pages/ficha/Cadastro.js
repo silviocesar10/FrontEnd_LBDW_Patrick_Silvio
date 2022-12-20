@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
-import FormAluno from "../../components/aluno/FormAluno";
+import FormFicha from "../../components/ficha/FormFicha";
 import InformModal from "../../components/utils/InformModal";
 
 const Cadastro = () => {
@@ -34,7 +34,7 @@ const Cadastro = () => {
             .then(() => {
                 setErrors({});
                 axios
-                    .post("http://localhost:8080/api/alunos", inputs)
+                    .post("http://localhost:8080/api/ficha", inputs)
                     .then((response) => {
                         if (response.status === 201) {
                             modal.show();
@@ -56,7 +56,7 @@ const Cadastro = () => {
 
     function closeModalAndRedirect() {
         modal.hide();
-        navigate("/alunos");
+        navigate("/ficha");
     }
 
     useEffect(() => {
@@ -84,13 +84,13 @@ const Cadastro = () => {
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
-                <h1>Novo Aluno</h1>
+                <h1>Novo Ficha</h1>
             </div>
             <hr />
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} isNew={true} />
+                <FormFicha handleChange={handleChange} inputs={inputs} errors={errors} isNew={true} />
                 <div className="mt-3">
-                    <Link to="/alunos" className="btn btn-secondary me-1">
+                    <Link to="/ficha" className="btn btn-secondary me-1">
                         Cancelar
                     </Link>
                     <button type="submit" className="btn btn-primary">
@@ -98,7 +98,7 @@ const Cadastro = () => {
                     </button>
                 </div>
             </form>
-            <InformModal info="Aluno cadastrado com sucesso!" action={closeModalAndRedirect} />
+            <InformModal info="Ficha cadastrado com sucesso!" action={closeModalAndRedirect} />
         </>
     );
 };
