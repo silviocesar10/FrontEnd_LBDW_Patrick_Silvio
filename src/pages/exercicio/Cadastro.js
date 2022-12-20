@@ -44,7 +44,7 @@ const Cadastro = () => {
             .then(() => {
                 setErrors({});
                 axios
-                    .post("http://localhost:8080/api/alunos", inputs)
+                    .post("http://localhost:8080/api/tipoexercicio", inputs)
                     .then((response) => {
                         if (response.status === 201) {
                             modal.show();
@@ -66,7 +66,7 @@ const Cadastro = () => {
 
     function closeModalAndRedirect() {
         modal.hide();
-        navigate("/alunos");
+        navigate("/tipoexercicio");
     }
 
     useEffect(() => {
@@ -100,7 +100,7 @@ const Cadastro = () => {
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
                 <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} isNew={true} />
                 <div className="mt-3">
-                    <Link to="/alunos" className="btn btn-secondary me-1">
+                    <Link to="/tipoexercicio" className="btn btn-secondary me-1">
                         Cancelar
                     </Link>
                     <button type="submit" className="btn btn-primary">
