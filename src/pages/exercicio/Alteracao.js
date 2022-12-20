@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
-import FormAluno from "../../components/aluno/FormAluno";
+import FormTipoExercicio from "../../components/tipoExercicio/FormTipoExercicio";
 import InformModal from "../../components/utils/InformModal";
 
 const Alteracao = () => {
@@ -13,8 +13,8 @@ const Alteracao = () => {
     const [modal, setModal] = useState(undefined);
     const navigate = useNavigate();
 
-    const idAluno = useParams().id;
-    if (!idAluno) {
+    const idTipoExercicio = useParams().id;
+    if (!idTipoExercicio) {
         navigate("/listagem");
     }
 
@@ -40,7 +40,7 @@ const Alteracao = () => {
             .then(() => {
                 setErrors({});
                 axios
-                    .put(`http://localhost:8080/api/alunos/${idAluno}`, inputs)
+                    .put(`http://localhost:8080/api/tipoExercicio/${idTipoExercicio}`, inputs)
                     .then((response) => {
                         if (response.status === 200) {
                             modal.show();
@@ -62,15 +62,15 @@ const Alteracao = () => {
 
     function closeModalAndRedirect() {
         modal.hide();
-        navigate("/alunos");
+        navigate("/tipoExercicio");
     }
 
     useEffect(() => {
         const informModal = new bootstrap.Modal("#informModal", {});
         setModal(informModal);
-        setInputs({ ...inputs, id: idAluno });
+        setInputs({ ...inputs, id: idTipoExercicio });
         axios
-            .get(`http://localhost:8080/api/alunos/${idAluno}`)
+            .get(`http://localhost:8080/api/tipoExercicio/${idTipoExercicio}`)
             .then((response) => {
                 if (response.status === 200) {
                     setInputs(response.data);
@@ -103,13 +103,13 @@ const Alteracao = () => {
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
-                <h1>Alteração de Aluno</h1>
+                <h1>Alteração de Tipo de Exercicio</h1>
             </div>
             <hr />
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} />
+                <FormTipoExercicio handleChange={handleChange} inputs={inputs} errors={errors} />
                 <div className="mt-3">
-                    <Link to="/alunos" className="btn btn-secondary me-1">
+                    <Link to="/tipoExercicio" className="btn btn-secondary me-1">
                         Cancelar
                     </Link>
                     <button type="submit" className="btn btn-primary">
@@ -117,7 +117,7 @@ const Alteracao = () => {
                     </button>
                 </div>
             </form>
-            <InformModal info="Aluno alterado com sucesso!" action={closeModalAndRedirect} />
+            <InformModal info="Tipo de Exercicio alterado com sucesso!" action={closeModalAndRedirect} />
         </>
     );
 };
