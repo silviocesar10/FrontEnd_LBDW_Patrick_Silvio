@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
-import FormAluno from "../../components/aluno/FormAluno";
+import FormAluno from "../../components/ficha/FormAluno";
 import InformModal from "../../components/utils/InformModal";
 
 const Alteracao = () => {
@@ -38,7 +38,7 @@ const Alteracao = () => {
             .then(() => {
                 setErrors({});
                 axios
-                    .put(`http://localhost:8080/api/alunos/${idAluno}`, inputs)
+                    .put(`http://localhost:8080/api/ficha/${idAluno}`, inputs)
                     .then((response) => {
                         if (response.status === 200) {
                             modal.show();
@@ -60,7 +60,7 @@ const Alteracao = () => {
 
     function closeModalAndRedirect() {
         modal.hide();
-        navigate("/alunos");
+        navigate("/ficha");
     }
 
     useEffect(() => {
@@ -68,7 +68,7 @@ const Alteracao = () => {
         setModal(informModal);
         setInputs({ ...inputs, id: idAluno });
         axios
-            .get(`http://localhost:8080/api/alunos/${idAluno}`)
+            .get(`http://localhost:8080/api/ficha/${idAluno}`)
             .then((response) => {
                 if (response.status === 200) {
                     setInputs(response.data);
@@ -107,7 +107,7 @@ const Alteracao = () => {
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
                 <FormAluno handleChange={handleChange} inputs={inputs} errors={errors} />
                 <div className="mt-3">
-                    <Link to="/alunos" className="btn btn-secondary me-1">
+                    <Link to="/ficha" className="btn btn-secondary me-1">
                         Cancelar
                     </Link>
                     <button type="submit" className="btn btn-primary">
