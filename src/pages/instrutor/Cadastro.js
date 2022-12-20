@@ -37,7 +37,7 @@ const Cadastro = () => {
             .then(() => {
                 setErrors({});
                 axios
-                    .post("http://localhost:8080/api/instrutors", inputs)
+                    .post("http://localhost:8080/api/instrutor", inputs)
                     .then((response) => {
                         if (response.status === 201) {
                             modal.show();
