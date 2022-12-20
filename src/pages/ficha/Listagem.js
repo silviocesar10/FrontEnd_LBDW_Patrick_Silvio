@@ -2,18 +2,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
-import TableAlunos from "../../components/aluno/TableAlunos";
+import TableFicha from "../../components/aluno/TableFicha";
 import "./Listagem.css";
 
 const Listagem = () => {
-    const [alunos, setAlunos] = useState([]);
+    const [ficha, setFicha] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const carregarAlunos = () => {
+    const carregarFicha = () => {
         axios
-            .get("http://localhost:8080/api/alunos")
+            .get("http://localhost:8080/api/ficha")
             .then((response) => {
-                setAlunos(response.data);
+                setFicha(response.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -22,19 +22,19 @@ const Listagem = () => {
     };
 
     useEffect(() => {
-        carregarAlunos();
+        carregarFicha();
     }, []);
 
     return (
         <>
             <div className="d-flex justify-content-between align-items-center">
-                <h1>Alunos</h1>
-                <Link to="/alunos/cadastrar" className="btn btn-primary">
+                <h1>Ficha</h1>
+                <Link to="/ficha/cadastrar" className="btn btn-primary">
                     Novo
                 </Link>
             </div>
             <hr />
-            {loading ? <Loading /> : <TableAlunos alunos={alunos} setAlunos={setAlunos} />}
+            {loading ? <Loading /> : <TableFicha ficha={ficha} setFicha={setFicha} />}
         </>
     );
 };
